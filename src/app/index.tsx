@@ -1,25 +1,25 @@
 import { Link } from 'expo-router';
 import { View, Text } from '@/components/general/Themed';
+import CustomButton from '@/components/general/CustomButton';
+import Card from '@/components/general/Card';
 
 export default function HomeScreen() {
   return (
     <View
       style={{
         flex: 1,
-        alignItems: 'center',
         gap: 10,
+        padding: 10,
+        backgroundColor: 'transparent',
       }}
     >
-      <Text style={{ fontSize: 30 }}>Title</Text>
-
-      <Link href="/workout/current">
-        <Text>Resume Current Workout</Text>
-      </Link>
-      <Link href="/workout/123">
-        <Text>Open Workout with id 123</Text>
+      <Link href="/workout/current" asChild>
+        <CustomButton title="Resume workout" />
       </Link>
 
-      <Text>Home screen</Text>
+      <Card title="Morning workout" href="/workout/123">
+        <Text>Hello</Text>
+      </Card>
     </View>
   );
 }
