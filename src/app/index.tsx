@@ -1,7 +1,9 @@
 import { Link } from 'expo-router';
 import { View, Text } from '@/components/general/Themed';
 import CustomButton from '@/components/general/CustomButton';
-import Card from '@/components/general/Card';
+import WorkoutListItem from '@/components/workouts/WorkoutListItem';
+import workouts from '@/data/dummyWorkouts';
+import { FlatList } from 'react-native';
 
 export default function HomeScreen() {
   return (
@@ -17,9 +19,12 @@ export default function HomeScreen() {
         <CustomButton title="Resume workout" />
       </Link>
 
-      <Card title="Morning workout" href="/workout/123">
-        <Text>Hello</Text>
-      </Card>
+      <FlatList
+        data={workouts}
+        contentContainerStyle={{ gap: 8 }}
+        renderItem={({ item }) => <WorkoutListItem workout={item} />}
+        showsVerticalScrollIndicator={false}
+      />
     </View>
   );
 }
